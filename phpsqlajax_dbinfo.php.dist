@@ -1,0 +1,10 @@
+<?php
+// Database information
+// To use this file, rename it to phpsqlajax_dbinfo.php
+// If using Openshift, no need to use this file. The configuration is loaded automatically.
+
+$host = 'localhost';
+$port = 3306;
+$username="maps_user";
+$password="password";
+$database="maps";

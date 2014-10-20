@@ -4,8 +4,15 @@
 *
 */
 
+$host = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$port = getenv('OPENSHIFT_MYSQL_DB_PORT');
+$username = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$database = getenv('OPENSHIFT_GEAR_NAME');
 
-require("phpsqlajax_dbinfo.php");
+if(file_exists('phpsqlajax_dbinfo.php')) {
+    require("phpsqlajax_dbinfo.php");
+}
 
 // Start XML file, create parent node
 
@@ -15,7 +22,7 @@ $parnode = $dom->appendChild($node);
 
 // Opens a connection to a MySQL server
 
-$connection=mysql_connect ('localhost', $username, $password);
+$connection=mysql_connect ($host.':'.$port, $username, $password);
 if (!$connection) {  die('Not connected : ' . mysql_error());}
 
 // Set the active MySQL database
