@@ -38,7 +38,7 @@
       });
       var infoWindow = new google.maps.InfoWindow;
       // Change this depending on the name of your PHP file
-      downloadUrl("https://ec2-54-212-152-86.us-west-2.compute.amazonaws.com/wordpress/phpsqlajax_genxml3.php", function(data) {
+      downloadUrl("http://moocmap-lt.apps.ctlt.ubc.ca/phpsqlajax_genxml3.php", function(data) {
         var xml = data.responseXML;
         var markers = xml.documentElement.getElementsByTagName("marker");
         for (var i = 0; i < markers.length; i++) {
