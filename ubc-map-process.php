@@ -1,8 +1,17 @@
 <?php
 //The form is submitted to this processor. The marker is added to the database and redirects to the output map
 
-require("phpsqlajax_dbinfo.php");
-$link = mysqli_connect("localhost", $username, $password, $database);
+$host = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$port = getenv('OPENSHIFT_MYSQL_DB_PORT');
+$username = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$database = getenv('OPENSHIFT_GEAR_NAME');
+
+if(file_exists('phpsqlajax_dbinfo.php')) {
+    require("phpsqlajax_dbinfo.php");
+}
+
+$link = mysqli_connect($host.':'.$port, $username, $password, $database);
 
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
